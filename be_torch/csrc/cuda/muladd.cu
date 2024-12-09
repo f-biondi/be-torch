@@ -29,7 +29,7 @@ at::Tensor mymuladd_cuda(const at::Tensor& a, const at::Tensor& b, double c) {
 }
 
 // Registers CUDA implementations for mymuladd, mymul, myadd_out
-TORCH_LIBRARY_IMPL(extension_cpp, CUDA, m) {
+TORCH_LIBRARY_IMPL(be_torch, CUDA, m) {
   m.impl("mymuladd", &mymuladd_cuda);
 }
 
