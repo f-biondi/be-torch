@@ -28,6 +28,9 @@ at::Tensor mymuladd_cuda(const at::Tensor& a, const at::Tensor& b, double c) {
   return result;
 }
 
+// Registers _C as a Python extension module.
+PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {}
+
 // Registers CUDA implementations for mymuladd, mymul, myadd_out
 TORCH_LIBRARY_IMPL(be_torch, CUDA, m) {
   m.impl("mymuladd", &mymuladd_cuda);
