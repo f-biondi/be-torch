@@ -47,7 +47,3 @@ def _setup_context(ctx, inputs, output):
 torch.library.register_autograd(
     "be_torch::mymuladd", _backward, setup_context=_setup_context)
 """
-
-
-
-
