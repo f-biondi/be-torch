@@ -16,7 +16,7 @@ from torch.utils.cpp_extension import (
     CUDA_HOME,
 )
 
-library_name = "extension_cpp"
+library_name = "be_torch"
 
 
 def get_extensions():
@@ -71,9 +71,9 @@ setup(
     packages=find_packages(),
     ext_modules=get_extensions(),
     install_requires=["torch"],
-    description="Example of PyTorch cpp and CUDA extensions",
+    description="BE Pytorch",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/pytorch/extension-cpp",
+    url="https://github.com/f-biondi/be-torch",
     cmdclass={"build_ext": BuildExtension},
 )

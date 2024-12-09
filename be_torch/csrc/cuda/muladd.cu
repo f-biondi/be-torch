@@ -3,7 +3,7 @@
 #include <cuda.h>
 #include <cuda_runtime.h>
 
-namespace extension_cpp {
+namespace be_torch {
 
 __global__ void muladd_kernel(int numel, const float* a, const float* b, float c, float* result) {
   int idx = blockIdx.x * blockDim.x + threadIdx.x;
@@ -29,7 +29,7 @@ at::Tensor mymuladd_cuda(const at::Tensor& a, const at::Tensor& b, double c) {
 }
 
 // Registers CUDA implementations for mymuladd, mymul, myadd_out
-TORCH_LIBRARY_IMPL(extension_cpp, CUDA, m) {
+TORCH_LIBRARY_IMPL(be_torch, CUDA, m) {
   m.impl("mymuladd", &mymuladd_cuda);
 }
 
