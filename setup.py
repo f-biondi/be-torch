@@ -71,8 +71,6 @@ setup(
     ext_modules=get_extensions(),
     install_requires=["torch"],
     description="BE Pytorch",
-    long_description=open("README.md").read(),
-    long_description_content_type="text/markdown",
     url="https://github.com/f-biondi/be-torch",
     cmdclass={"build_ext": BuildExtension},
 )
