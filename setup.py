@@ -18,7 +18,6 @@ from torch.utils.cpp_extension import (
 
 library_name = "be_torch"
 
-
 def get_extensions():
     debug_mode = os.getenv("DEBUG", "0") == "1"
     use_cuda = os.getenv("USE_CUDA", "1") == "1"

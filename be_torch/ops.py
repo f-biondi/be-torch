@@ -1,23 +1,20 @@
 import torch
 from torch import Tensor
 
-__all__ = ["mymuladd"]
+__all__ = ["be"]
 
 
-def mymuladd(a: Tensor, b: Tensor, c: float) -> Tensor:
+def be(edge_index: Tensor, N: int) -> Tensor:
     """Performs a * b + c in an efficient fused kernel"""
-    return torch.ops.be_torch.mymuladd.default(a, b, c)
+    return torch.ops.be_torch.be.default(edge_index, N)
 
 
 # Registers a FakeTensor kernel (aka "meta kernel", "abstract impl")
 # that describes what the properties of the output Tensor are given
 # the properties of the input Tensor. The FakeTensor kernel is necessary
 # for the op to work performantly with torch.compile.
-@torch.library.register_fake("be_torch::mymuladd")
-def _(a, b, c):
-    torch._check(a.shape == b.shape)
-    torch._check(a.dtype == torch.float)
-    torch._check(b.dtype == torch.float)
-    torch._check(a.device == b.device)
-    return torch.empty_like(a)
+@torch.library.register_fake("be_torch::be")
+def _(edge_index, N):
+    torch._check(edge_index.shape[0] == 2)
+    return torch.zeros(N)
 
