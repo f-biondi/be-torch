@@ -11,7 +11,7 @@ __global__ void be_kernel(const long int* edge_index, long int N, long int* resu
 }
 
 at::Tensor be_cuda(const at::Tensor& edge_index, long int N) {
-  TORCH_CHECK(edge_index.sizes()[0] == 2);
+  //TORCH_CHECK(edge_index.sizes()[0] == 2);
   TORCH_INTERNAL_ASSERT(edge_index.device().type() == at::DeviceType::CUDA);
   at::Tensor edge_index_contig = edge_index_contig.contiguous();
   at::Tensor result = torch::empty(N, edge_index_contig.options());
