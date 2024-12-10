@@ -9,7 +9,7 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {}
 
 // Defines the operators
 TORCH_LIBRARY(be_torch, m) {
-  m.def("be(Tensor edge_index, long N) -> Tensor");
+  m.def("be(Tensor edge_index, int N) -> Tensor");
 }
 
 }

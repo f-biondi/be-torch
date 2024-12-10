@@ -5,7 +5,6 @@ __all__ = ["be"]
 
 
 def be(edge_index: Tensor, N: int) -> Tensor:
-    """Performs a * b + c in an efficient fused kernel"""
     return torch.ops.be_torch.be.default(edge_index, N)
 
 
